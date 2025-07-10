@@ -27,7 +27,7 @@ public static HashMap<String, Vendedor> cargar() {
     if (!archivo.exists()) {
         HashMap<String, Vendedor> cuentas = new HashMap<>();
             cuentas.put("usuario1", new Vendedor("1111", "usuario1", 10, 1000,10));
-            cuentas.put("usuario2", new Vendedor("5555", "usuario2", 5, 750,10));
+            cuentas.put("usuario2", new Vendedor("5555", "usuario2", 5, 1000,10));
         return cuentas;
     }
     try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(ARCHIVO))) {
@@ -36,7 +36,7 @@ public static HashMap<String, Vendedor> cargar() {
         System.out.println("Error cargando cuenta:" + ioe.getMessage());
         HashMap<String, Vendedor> cuentas = new HashMap<>();
             cuentas.put("usuario1", new Vendedor("1111", "usuario1", 10, 1000,10));
-            cuentas.put("usuario2", new Vendedor("5555", "usuario2", 5, 750,10));
+            cuentas.put("usuario2", new Vendedor("5555", "usuario2", 5,1000,10));
         return cuentas;
     }
 }

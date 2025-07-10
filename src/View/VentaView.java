@@ -42,9 +42,18 @@ public class VentaView extends VBox {
 
         btnAceptar.setOnAction(e -> {
             try {
-                int monto = Integer.parseInt(campoMonto.getText());               
+                String origen = campoOrigen.getText();
+                String destino = campoDestino.getText();
+                int monto = Integer.parseInt(campoMonto.getText());
+                
+                if(origen.isEmpty() || destino.isEmpty() || monto < 0 ){
+                    lbl.setText("todos los campos son obligatorios");
+                    return;
+                }
+                
                 cuenta.VentasP(monto);
-                resultado.setText("Venta exitosa. Entradas vendidas: " + cuenta.getTpasajesVendidos() + "\n" + cuenta.precioxventas(monto));
+                lbl.setText("Venta exitosa");
+                resultado.setText("Entradas vendidas: "+ monto + " por " +  cuenta.precioxventas(monto));
                 //si no ve el precio por las ventas tiene que ampliar un poco la ventana, esta abajo del todo.
             } catch (NumberFormatException ex) {
                 resultado.setText("Error: ingrese un número válido.");
